@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    nginx:
+        build: 
+            context: ./apis
+            dockerfile: ./Dockerfile
+        links:
+            - account:account
+        ports:
+            - "80:80"
+    account:
+        build: 
+            context: ./
+            dockerfile: ./apis/account/Dockerfile
+        ports:
+            - "3001"
